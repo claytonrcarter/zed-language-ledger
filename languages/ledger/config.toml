@@ -1,0 +1,5 @@
+name = "Ledger"
+grammar = "ledger"
+path_suffixes = ["ledger"]
+# See https://www.ledger-cli.org/3.0/doc/ledger3.html#Commenting-on-your-Journal
+line_comments = ["; ", "# ", "% ", "| ", "* "]
