@@ -27,7 +27,10 @@
   (check_out)
 ] @markup.raw
 
-(account) @variable.member
+(payee) @variable
+(account) @variable
+; need to assign a capture for "Go To Definition" to work
+(filename) @type
 
 "include" @keyword.import
 
