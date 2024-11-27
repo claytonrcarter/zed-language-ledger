@@ -1,4 +1,4 @@
-; Copied from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/queries/ledger/highlights.scm
+; Adapted from from https://github.com/nvim-treesitter/nvim-treesitter/blob/master/queries/ledger/highlights.scm
 
 [
   (block_comment)
@@ -25,14 +25,17 @@
   (option_value)
   (check_in)
   (check_out)
-] @markup.raw
+] @string.special.symbol
 
 (payee) @variable
 (account) @variable
-; need to assign a capture for "Go To Definition" to work
-(filename) @type
+(filename) @link_uri
 
-"include" @keyword.import
+(code) @number
+(code
+    "(" @punctuation.bracket
+    ")" @punctuation.bracket
+)
 
 [
   "account"
@@ -46,6 +49,7 @@
   "end"
   "eval"
   "format"
+  "include"
   "nomarket"
   "note"
   "payee"
