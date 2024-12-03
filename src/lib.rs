@@ -106,12 +106,35 @@ impl zed::Extension for LedgerExtension {
     fn language_server_command(
         &mut self,
         language_server_id: &zed::LanguageServerId,
-        _worktree: &zed::Worktree,
+        worktree: &zed::Worktree,
     ) -> zed::Result<zed::Command> {
+        let use_local_build = true;
+        let use_local_debug_build = false;
+
+        let command = if use_local_build {
+            let home = worktree
+                .shell_env()
+                .iter()
+                .filter_map(|env| match env.0.as_str() {
+                    "HOME" => Some(env.1.clone()),
+                    _ => None,
+                })
+                .nth(0)
+                .ok_or("couldn't find $HOME in env")?;
+            format!(
+                "{home}/src/ledger-language-server/target/{debug}/ledger-language-server",
+                debug = if use_local_debug_build {
+                    "debug"
+                } else {
+                    "release"
+                }
+            )
+        } else {
+            self.language_server_binary_path(language_server_id)?
+        };
+
         Ok(zed::Command {
-            command: self.language_server_binary_path(language_server_id)?,
-            // command: "/Users/crcarter/src/ledger-language-server/target/debug/ledger-lsp"
-            //     .to_owned(),
+            command,
             args: vec!["lsp".to_string()],
             env: Vec::new(),
         })
