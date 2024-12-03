@@ -8,11 +8,11 @@ repository = "https://github.com/claytonrcarter/zed-language-ledger"
 
 [grammars.ledger]
 # repository = "https://github.com/cbarrete/tree-sitter-ledger"
-# commit = "8a841fb20ce683bfbb3469e6ba67f2851cfdf94a"
+# commit = "d313153eef68c557ba4538b20de2d0e92f3ef6f8"
 repository = "https://github.com/claytonrcarter/tree-sitter-ledger"
-commit = "5ecde462948db959cec9ae379b22c732722e6ee8"
+commit = "2657e59e0e57f451e790df05de6878de957b415b"
 
-[language_servers.ledger-lsp]
-name = "ledger-lsp"
+[language_servers.ledger-language-server]
+name = "ledger-language-server"
 language = "Ledger"
 language_ids = { Ledger = "ledger" }
