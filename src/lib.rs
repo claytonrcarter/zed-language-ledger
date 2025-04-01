@@ -108,7 +108,7 @@ impl zed::Extension for LedgerExtension {
         language_server_id: &zed::LanguageServerId,
         worktree: &zed::Worktree,
     ) -> zed::Result<zed::Command> {
-        let use_local_build = true;
+        let use_local_build = false;
         let use_local_debug_build = false;
 
         let command = if use_local_build {
